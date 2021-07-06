@@ -4,7 +4,7 @@
  * 2.0; you may not use this file except in compliance with the Elastic License
  * 2.0.
  */
-package org.elasticsearch.xpack.core.termsenum;
+package org.elasticsearch.xpack.core.fieldsenum;
 
 import org.apache.lucene.analysis.MockAnalyzer;
 import org.apache.lucene.document.Document;
@@ -37,7 +37,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
 
-public class MultiShardTermsEnumTests extends ESTestCase {
+public class MultiShardFieldsEnumTests extends ESTestCase {
     
     public void testRandomIndexFusion() throws Exception {
         String fieldName = "foo";

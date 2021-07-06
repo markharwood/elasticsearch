@@ -74,6 +74,9 @@ import org.elasticsearch.xpack.core.action.XPackUsageFeatureAction;
 import org.elasticsearch.xpack.core.action.XPackUsageResponse;
 import org.elasticsearch.xpack.core.async.DeleteAsyncResultAction;
 import org.elasticsearch.xpack.core.async.TransportDeleteAsyncResultAction;
+import org.elasticsearch.xpack.core.fieldsenum.action.FieldsEnumAction;
+import org.elasticsearch.xpack.core.fieldsenum.action.TransportFieldsEnumAction;
+import org.elasticsearch.xpack.core.fieldsenum.rest.RestFieldsEnumAction;
 import org.elasticsearch.xpack.core.ml.MlMetadata;
 import org.elasticsearch.xpack.core.rest.action.RestReloadAnalyzersAction;
 import org.elasticsearch.xpack.core.rest.action.RestXPackInfoAction;
@@ -294,6 +297,7 @@ public class XPackPlugin extends XPackClientPlugin
         actions.addAll(licensing.getActions());
         actions.add(new ActionHandler<>(ReloadAnalyzerAction.INSTANCE, TransportReloadAnalyzersAction.class));
         actions.add(new ActionHandler<>(TermsEnumAction.INSTANCE, TransportTermsEnumAction.class));
+        actions.add(new ActionHandler<>(FieldsEnumAction.INSTANCE, TransportFieldsEnumAction.class));
         actions.add(new ActionHandler<>(DeleteAsyncResultAction.INSTANCE, TransportDeleteAsyncResultAction.class));
         actions.add(new ActionHandler<>(XPackInfoFeatureAction.DATA_TIERS, DataTiersInfoTransportAction.class));
         actions.add(new ActionHandler<>(XPackUsageFeatureAction.DATA_TIERS, DataTiersUsageTransportAction.class));
@@ -334,6 +338,7 @@ public class XPackPlugin extends XPackClientPlugin
         handlers.add(new RestXPackUsageAction());
         handlers.add(new RestReloadAnalyzersAction());
         handlers.add(new RestTermsEnumAction());
+        handlers.add(new RestFieldsEnumAction());
         handlers.addAll(licensing.getRestHandlers(settings, restController, clusterSettings, indexScopedSettings, settingsFilter,
             indexNameExpressionResolver, nodesInCluster));
         return handlers;

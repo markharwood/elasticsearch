@@ -4,7 +4,7 @@
  * 2.0; you may not use this file except in compliance with the Elastic License
  * 2.0.
  */
-package org.elasticsearch.xpack.core.termsenum.action;
+package org.elasticsearch.index.mapper;
 
 import org.elasticsearch.common.xcontent.ParseField;
 import org.elasticsearch.common.io.stream.StreamInput;
@@ -87,7 +87,7 @@ public class TermCount implements Writeable, ToXContentFragment {
         return Objects.hash(getTerm(), getDocCount());
     }
 
-    void addToDocCount(long extra) {
+    public void addToDocCount(long extra) {
         docCount += extra;
     }
 
